@@ -32,7 +32,11 @@ $(function() {
                 contentType: "application/json",
                 dataType: 'json',
                 success: function() { window.location.href = url_redirect },
-                error: function() { $('input#_store_csv').prop('disabled',false);}
+                error: function(error) {
+
+                    alert(error["responseJSON"]["message"]);
+                    $('input#_store_csv').prop('disabled',false);
+                }
             });
         } else {
           // Do nothing!
