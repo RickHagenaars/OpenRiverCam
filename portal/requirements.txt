@@ -17,3 +17,4 @@ xarray
 h5netcdf
 pyproj
 uwsgi
+alembic

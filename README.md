@@ -294,3 +294,7 @@ of each cross-sectional point. NetCDF-CF compatible.
 ```
 From ```flow_filter``` a number of statistics are derived for storage in the database.
 
+## Database Migrations
+After making changes to field. Generate migration ```alembic revision --autogenerate -m "migration definition"```
+
+Migrate the database ``` alembic upgrade head ```

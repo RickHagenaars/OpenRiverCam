@@ -201,6 +201,14 @@ class MovieView(UserModelView):
             if model.actual_water_level != self.previous_water_level:
                 model.status = MovieStatus.MOVIE_STATUS_EXTRACTED
 
+                rating_points = RatingPoint.query.filter_by(movie_id=model.id)
+                for rating_point in rating_points:
+                    rating_curve = RatingCurve.query.get(rating_point.ratingcurve_id)
+                    rating_curve.a = None
+                    rating_curve.b = None
+                    rating_curve.h0 = None
+                flash("Movie Will be reprocessed And Rating Curve Will be affected")
+
     def edit_form(self, obj=None):
         try:
             self.previous_water_level = obj.actual_water_level
